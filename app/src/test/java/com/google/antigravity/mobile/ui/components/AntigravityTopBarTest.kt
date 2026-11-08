@@ -16,7 +16,8 @@ class AntigravityTopBarTest {
             AgentState.THINKING to "Reasoning...",
             AgentState.EXECUTING_TOOL to "Running Tool",
             AgentState.WAITING_APPROVAL to "Needs Approval",
-            AgentState.ERROR to "Attention Required"
+            AgentState.ERROR to "Attention Required",
+            AgentState.DISCONNECTED to "Offline"
         )
 
         testCases.forEach { (state, expectedLabel) ->
@@ -26,6 +27,7 @@ class AntigravityTopBarTest {
                 AgentState.EXECUTING_TOOL -> "Running Tool"
                 AgentState.WAITING_APPROVAL -> "Needs Approval"
                 AgentState.ERROR -> "Attention Required"
+                AgentState.DISCONNECTED -> "Offline"
             }
             assertEquals(expectedLabel, label)
         }
