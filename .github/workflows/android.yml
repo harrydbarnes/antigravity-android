@@ -31,12 +31,10 @@ jobs:
           set +e
           ./gradlew assembleDebug --stacktrace --no-daemon > build.log 2>&1
           GRADLE_EXIT=$?
-          echo "### Gradle Build Result (Exit Code: $GRADLE_EXIT)" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          tail -n 120 build.log >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
           if [ $GRADLE_EXIT -ne 0 ]; then
-            tail -n 120 build.log
+            grep -E "e: " build.log | head -n 15 | while IFS= read -r l; do echo "::error title=KotlinError::$l"; done
+            grep -A 4 "What went wrong:" build.log | while IFS= read -r l; do echo "::error title=GradleFailure::$l"; done
+            grep -A 2 "Caused by:" build.log | head -n 10 | while IFS= read -r l; do echo "::error title=CausedBy::$l"; done
             exit $GRADLE_EXIT
           fi
 
