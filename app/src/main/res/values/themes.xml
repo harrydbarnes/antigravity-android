@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme. -->
-    <style name="Theme.Antigravity" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light/dark theme here. -->
-        <item name="colorPrimary">@color/antigravity_primary</item>
-        <item name="colorSecondary">@color/antigravity_secondary</item>
+    <!-- Base application theme for Edge-to-Edge Compose Activity -->
+    <style name="Theme.Antigravity" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
