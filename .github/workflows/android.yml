@@ -28,7 +28,17 @@ jobs:
 
       - name: Build Debug APK
         run: |
-          ./gradlew assembleDebug --stacktrace --no-daemon
+          set +e
+          ./gradlew assembleDebug --stacktrace --no-daemon > build.log 2>&1
+          GRADLE_EXIT=$?
+          echo "### Gradle Build Result (Exit Code: $GRADLE_EXIT)" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          tail -n 120 build.log >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          if [ $GRADLE_EXIT -ne 0 ]; then
+            tail -n 120 build.log
+            exit $GRADLE_EXIT
+          fi
 
       - name: List outputs
         run: |
