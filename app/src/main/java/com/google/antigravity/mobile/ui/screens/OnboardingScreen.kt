@@ -119,14 +119,14 @@ fun OnboardingScreen(
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_antigravity_logo),
-                        contentDescription = "Antigravity",
+                        painter = painterResource(id = R.drawable.ic_counterweight_logo),
+                        contentDescription = "Counterweight",
                         tint = AntigravityViolet,
                         modifier = Modifier.size(28.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "ANTIGRAVITY",
+                        text = "COUNTERWEIGHT",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Black,
                         letterSpacing = 2.sp,
@@ -275,7 +275,7 @@ private fun OnboardingIntroPage() {
             contentAlignment = Alignment.Center
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_antigravity_logo),
+                painter = painterResource(id = R.drawable.ic_counterweight_logo),
                 contentDescription = "Logo",
                 tint = AntigravityViolet,
                 modifier = Modifier.size(54.dp)
@@ -313,7 +313,7 @@ private fun OnboardingIntroPage() {
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Antigravity is Google DeepMind's agent-first development platform. Untether yourself from the desk and pair-program on mobile.",
+            text = "Counterweight is the mobile companion for Antigravity, Google DeepMind's agentic development platform. Untether yourself from the desk and pair-program on mobile.",
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -685,7 +685,7 @@ private fun OnboardingAuthPage(
         verticalArrangement = Arrangement.Center
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_antigravity_logo),
+            painter = painterResource(id = R.drawable.ic_counterweight_logo),
             contentDescription = "Logo",
             tint = AntigravityViolet,
             modifier = Modifier.size(54.dp)
@@ -703,7 +703,7 @@ private fun OnboardingAuthPage(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            text = "Antigravity Remote features are included with Google AI Pro and Google AI Ultra accounts.",
+            text = "Counterweight & Antigravity Remote features are included with Google AI Pro and Google AI Ultra accounts.",
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -765,7 +765,7 @@ private fun OnboardingAuthPage(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = "By signing in, you agree to Google Antigravity Terms of Service.",
+            text = "By signing in, you agree to Google Antigravity & Counterweight Terms of Service.",
             fontSize = 11.sp,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant

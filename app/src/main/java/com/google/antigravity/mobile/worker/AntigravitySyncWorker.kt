@@ -39,22 +39,27 @@ class AntigravitySyncWorker(
 
     companion object {
         private const val WORK_NAME = "antigravity_background_sync"
+        private const val TAG = "AntigravitySyncWorker"
 
         fun schedule(context: Context) {
-            val constraints = Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.CONNECTED)
-                .build()
+            try {
+                val constraints = Constraints.Builder()
+                    .setRequiredNetworkType(NetworkType.CONNECTED)
+                    .build()
 
-            val syncRequest = PeriodicWorkRequestBuilder<AntigravitySyncWorker>(15, TimeUnit.MINUTES)
-                .setConstraints(constraints)
-                .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 1, TimeUnit.MINUTES)
-                .build()
+                val syncRequest = PeriodicWorkRequestBuilder<AntigravitySyncWorker>(15, TimeUnit.MINUTES)
+                    .setConstraints(constraints)
+                    .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 1, TimeUnit.MINUTES)
+                    .build()
 
-            WorkManager.getInstance(context).enqueueUniquePeriodicWork(
-                WORK_NAME,
-                ExistingPeriodicWorkPolicy.KEEP,
-                syncRequest
-            )
+                WorkManager.getInstance(context).enqueueUniquePeriodicWork(
+                    WORK_NAME,
+                    ExistingPeriodicWorkPolicy.KEEP,
+                    syncRequest
+                )
+            } catch (e: Exception) {
+                android.util.Log.e(TAG, "Failed to schedule background sync worker", e)
+            }
         }
     }
 }

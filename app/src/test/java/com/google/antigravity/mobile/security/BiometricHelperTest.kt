@@ -9,12 +9,12 @@ class BiometricHelperTest {
 
     @Test
     fun testDefaultPromptStrings() {
-        val defaultTitle = "Authenticate with Antigravity"
+        val defaultTitle = "Authenticate with Counterweight"
         val defaultSubtitle = "Confirm biometric identity to approve execution"
 
-        assertEquals("Authenticate with Antigravity", defaultTitle)
+        assertEquals("Authenticate with Counterweight", defaultTitle)
         assertEquals("Confirm biometric identity to approve execution", defaultSubtitle)
-        assertTrue(defaultTitle.contains("Antigravity"))
+        assertTrue(defaultTitle.contains("Counterweight"))
     }
 
     @Test

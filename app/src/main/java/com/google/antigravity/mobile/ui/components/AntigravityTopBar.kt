@@ -89,8 +89,8 @@ fun AntigravityTopBar(
                         .padding(vertical = 4.dp, horizontal = 6.dp)
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_antigravity_logo),
-                        contentDescription = "Antigravity Logo",
+                        painter = painterResource(id = R.drawable.ic_counterweight_logo),
+                        contentDescription = "Counterweight Logo",
                         tint = AntigravityViolet,
                         modifier = Modifier.size(28.dp)
                     )

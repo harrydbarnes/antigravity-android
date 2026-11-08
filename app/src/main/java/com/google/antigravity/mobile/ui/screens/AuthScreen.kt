@@ -55,8 +55,8 @@ fun AuthScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_antigravity_logo),
-                contentDescription = "Antigravity Logo",
+                painter = painterResource(id = R.drawable.ic_counterweight_logo),
+                contentDescription = "Counterweight Logo",
                 tint = AntigravityViolet,
                 modifier = Modifier.size(72.dp)
             )
@@ -64,7 +64,7 @@ fun AuthScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "Google Antigravity",
+                text = "Counterweight",
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onBackground
@@ -73,7 +73,7 @@ fun AuthScreen(
             Spacer(modifier = Modifier.height(6.dp))
 
             Text(
-                text = "The agent-first development platform.\nUntethered remote control and isolated cloud sandboxes.",
+                text = "Mobile companion for Google Antigravity.\nUntethered remote control and isolated cloud sandboxes.",
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onSurfaceVariant

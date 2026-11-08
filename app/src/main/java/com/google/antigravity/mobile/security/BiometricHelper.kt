@@ -15,7 +15,7 @@ class BiometricHelper(private val activity: FragmentActivity) {
     }
 
     fun promptBiometricAuth(
-        title: String = "Authenticate with Antigravity",
+        title: String = "Authenticate with Counterweight",
         subtitle: String = "Confirm biometric identity to approve execution",
         onSuccess: () -> Unit,
         onError: (String) -> Unit

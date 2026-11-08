@@ -1,0 +1,56 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Top Spindle Pin (Crisp White Pin Handle) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M51.5,40 L51.5,27.5 A2.5,2.5 0 0,1 56.5,27.5 L56.5,40 Z" />
+
+    <!-- Spindle Neck Collar (Antigravity Cyan Accent) -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M48,40 C48,39 60,39 60,40 C60,41 48,41 48,40 Z" />
+
+    <!-- Upper Conical Shoulder - Left Facet (Antigravity Violet #7C4DFF) -->
+    <path
+        android:fillColor="#7C4DFF"
+        android:pathData="M54,40 L29,52 Q41.5,55 54,56 Z" />
+
+    <!-- Upper Conical Shoulder - Right Facet (Radiant Violet #9E75FF) -->
+    <path
+        android:fillColor="#9E75FF"
+        android:pathData="M54,40 L79,52 Q66.5,55 54,56 Z" />
+
+    <!-- Gyroscopic Flywheel Rim (Solid Antigravity Cyan #00E5FF) -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M27,52 Q54,47 81,52 Q54,57 27,52 Z" />
+
+    <!-- Inner Core Spin Slit (White Specular Glint) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.9"
+        android:pathData="M36,52 Q54,49.5 72,52 Q54,54.5 36,52 Z" />
+
+    <!-- Lower Cone Body - Left Facet (Deep Antigravity Violet #651FFF) -->
+    <path
+        android:fillColor="#651FFF"
+        android:pathData="M27,52.5 Q38,66 54,82 L54,56 Q40.5,55 27,52.5 Z" />
+
+    <!-- Lower Cone Body - Right Facet (Antigravity Violet #7C4DFF) -->
+    <path
+        android:fillColor="#7C4DFF"
+        android:pathData="M81,52.5 Q70,66 54,82 L54,56 Q67.5,55 81,52.5 Z" />
+
+    <!-- Bottom Balancing Pivot Tip & Reflection Ring -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M52.5,82 A1.5,1.5 0 1,0 55.5,82 A1.5,1.5 0 1,0 52.5,82 Z" />
+    <path
+        android:fillColor="#00E5FF"
+        android:fillAlpha="0.35"
+        android:pathData="M46,84 Q54,82.5 62,84 Q54,85.5 46,84 Z" />
+</vector>

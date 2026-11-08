@@ -102,7 +102,7 @@ object NotificationHelper {
 
         val notification = NotificationCompat.Builder(context, CHANNEL_APPROVALS)
             .setSmallIcon(R.drawable.ic_terminal)
-            .setContentTitle("Antigravity Approval Needed")
+            .setContentTitle("Counterweight Approval Needed")
             .setContentText("${request.toolName}: ${request.command}")
             .setStyle(NotificationCompat.BigTextStyle()
                 .bigText("${request.explanation}\n\nCommand:\n${request.command}"))

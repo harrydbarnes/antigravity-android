@@ -20,6 +20,9 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import android.content.pm.PackageManager
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.antigravity.mobile.data.model.RemoteInstance
@@ -64,27 +67,31 @@ class MainActivity : FragmentActivity() {
     }
 
     private fun handleIncomingIntent(intent: Intent?) {
-        val data = intent?.data ?: return
-        val path = data.path ?: return
+        try {
+            val data = intent?.data ?: return
+            val path = data.path ?: return
 
-        when {
-            path.startsWith("/r/") -> {
-                val instanceId = path.removePrefix("/r/")
-                viewModel.selectInstance(
-                    RemoteInstance(
-                        id = instanceId,
-                        name = instanceId,
-                        hostname = "$instanceId.antigravity.internal",
-                        type = com.google.antigravity.mobile.data.model.MachineType.CLI_INTERACTIVE,
-                        isOnline = true,
-                        isBusy = false
+            when {
+                path.startsWith("/r/") -> {
+                    val instanceId = path.removePrefix("/r/")
+                    viewModel.selectInstance(
+                        RemoteInstance(
+                            id = instanceId,
+                            name = instanceId,
+                            hostname = "$instanceId.antigravity.internal",
+                            type = com.google.antigravity.mobile.data.model.MachineType.CLI_INTERACTIVE,
+                            isOnline = true,
+                            isBusy = false
+                        )
                     )
-                )
+                }
+                path.startsWith("/projects/") -> {
+                    val projectId = path.removePrefix("/projects/")
+                    // Switch project
+                }
             }
-            path.startsWith("/projects/") -> {
-                val projectId = path.removePrefix("/projects/")
-                // Switch project
-            }
+        } catch (e: Exception) {
+            android.util.Log.w("MainActivity", "Failed to parse incoming intent", e)
         }
     }
 }
@@ -108,14 +115,23 @@ fun MainAppContent(
 
     var selectedTab by remember { mutableIntStateOf(0) }
 
-    // Request notification permissions on Android 13+
+    // Safely request notification permissions on Android 13+
+    val context = LocalContext.current
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         val permissionLauncher = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.RequestPermission(),
             onResult = { /* Perm status handled */ }
         )
         LaunchedEffect(Unit) {
-            permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            val hasPermission = ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+            if (!hasPermission) {
+                runCatching {
+                    permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            }
         }
     }
 

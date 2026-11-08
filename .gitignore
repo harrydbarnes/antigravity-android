@@ -26,3 +26,5 @@ upload/
 .local/
 .cache/
 .npm/
+.ssl/
+

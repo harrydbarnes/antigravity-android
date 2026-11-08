@@ -24,4 +24,10 @@ class AntigravityAppTest {
         assertEquals("channel_approvals", channelApprovals)
         assertEquals("antigravity_background_sync", syncWorkName)
     }
+
+    @Test
+    fun testWorkManagerConfigurationProvider() {
+        val app = AntigravityApp()
+        assertNotNull(app.workManagerConfiguration)
+    }
 }

@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Antigravity</string>
-    <string name="app_subtitle">Agentic Development Platform</string>
+    <string name="app_name">Counterweight</string>
+    <string name="app_subtitle">Mobile Companion for Antigravity</string>
     
     <!-- Navigation Tabs -->
     <string name="nav_workspace">Workspace</string>
@@ -57,7 +57,7 @@
     <string name="artifacts_empty">No artifacts generated in this session yet</string>
 
     <!-- Settings Screen -->
-    <string name="settings_title">Antigravity Settings</string>
+    <string name="settings_title">Counterweight Settings</string>
     <string name="settings_account">Google Account</string>
     <string name="settings_tier_pro">Google AI Pro</string>
     <string name="settings_tier_ultra">Google AI Ultra</string>
