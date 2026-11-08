@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Antigravity</string>
+    <string name="app_subtitle">Agentic Development Platform</string>
+    
+    <!-- Navigation Tabs -->
+    <string name="nav_workspace">Workspace</string>
+    <string name="nav_remote_control">Remote Control</string>
+    <string name="nav_cloud_projects">Cloud Projects</string>
+    <string name="nav_artifacts">Artifacts</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Top Bar & Status -->
+    <string name="status_connected">Connected</string>
+    <string name="status_connecting">Connecting…</string>
+    <string name="status_offline">Offline</string>
+    <string name="status_idle">Agent Idle</string>
+    <string name="status_thinking">Thinking &amp; Executing…</string>
+    <string name="status_waiting_approval">Waiting for Approval</string>
+
+    <!-- Notification Channels -->
+    <string name="channel_approvals_name">Tool &amp; Command Approvals</string>
+    <string name="channel_approvals_desc">High-priority alerts when an agent requires terminal or tool execution approval</string>
+    
+    <string name="channel_tasks_name">Agent Task Updates</string>
+    <string name="channel_tasks_desc">Updates when long-running agent tasks complete or artifacts are created</string>
+
+    <string name="channel_instances_name">Remote Machine Status</string>
+    <string name="channel_instances_desc">Alerts when remote machines and CLI daemons connect or disconnect</string>
+
+    <!-- Notification Actions -->
+    <string name="action_approve">Approve (Y)</string>
+    <string name="action_reject">Reject (N)</string>
+    <string name="action_view_details">View Details</string>
+
+    <!-- Remote Control Screen -->
+    <string name="rc_title">Remote Control</string>
+    <string name="rc_subtitle">Drive desktop sessions &amp; CLI daemons across your devices</string>
+    <string name="rc_active_instances">Connected Machines (%1$d)</string>
+    <string name="rc_no_instances">No active machines connected</string>
+    <string name="rc_daemon_hint">To connect your workstation, run &lt;b&gt;agy remote-control start&lt;/b&gt; or start an interactive session with &lt;b&gt;agy --remote-control&lt;/b&gt;</string>
+    <string name="rc_connect_cta">Connect Machine</string>
+    <string name="rc_disconnect">Disconnect</string>
+
+    <!-- Cloud Projects Screen -->
+    <string name="cloud_title">Remote Cloud Projects</string>
+    <string name="cloud_subtitle">Isolated Google-managed cloud sandbox containers</string>
+    <string name="cloud_new_project">+ New Remote Project</string>
+    <string name="cloud_resources">Attached Resources</string>
+    <string name="cloud_github_repos">GitHub Repositories</string>
+    <string name="cloud_drive_files">Google Drive Context</string>
+    <string name="cloud_uploads">Uploaded Files</string>
+    <string name="cloud_active_conversations">Active Conversations</string>
+
+    <!-- Artifacts Screen -->
+    <string name="artifacts_title">Artifacts &amp; Deliverables</string>
+    <string name="artifacts_subtitle">Verify intent, progress, diffs, and verification proof</string>
+    <string name="artifacts_empty">No artifacts generated in this session yet</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Antigravity Settings</string>
+    <string name="settings_account">Google Account</string>
+    <string name="settings_tier_pro">Google AI Pro</string>
+    <string name="settings_tier_ultra">Google AI Ultra</string>
+    <string name="settings_notifications">Push Notifications</string>
+    <string name="settings_biometrics">Biometric Security Lock</string>
+    <string name="settings_biometrics_desc">Require fingerprint/face to approve commands or access remote tunnels</string>
+    <string name="settings_dark_mode">Dark Theme</string>
+    <string name="settings_sign_out">Sign Out</string>
+</resources>
