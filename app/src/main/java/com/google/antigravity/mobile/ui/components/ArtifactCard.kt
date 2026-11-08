@@ -70,6 +70,8 @@ fun ArtifactCard(
                     ArtifactType.GENERATIVE_UI -> Triple(AntigravityCyan.copy(alpha = 0.2f), AntigravityCyan, "UI PREVIEW")
                     ArtifactType.WALKTHROUGH -> Triple(AntigravityEmerald.copy(alpha = 0.2f), AntigravityEmerald, "WALKTHROUGH")
                     ArtifactType.DOCUMENT -> Triple(MaterialTheme.colorScheme.surface, MaterialTheme.colorScheme.onSurfaceVariant, "DOC")
+                    ArtifactType.REPORT -> Triple(AntigravityViolet.copy(alpha = 0.15f), AntigravityVioletLight, "REPORT")
+                    ArtifactType.FILE -> Triple(MaterialTheme.colorScheme.surface, MaterialTheme.colorScheme.onSurfaceVariant, "FILE")
                 }
 
                 Surface(

@@ -17,7 +17,9 @@ class ArtifactCardTest {
             ArtifactType.REPORT to "Report",
             ArtifactType.VERIFICATION_PROOF to "Proof",
             ArtifactType.WALKTHROUGH to "Walkthrough",
-            ArtifactType.FILE to "File"
+            ArtifactType.FILE to "File",
+            ArtifactType.GENERATIVE_UI to "UI Preview",
+            ArtifactType.DOCUMENT to "Doc"
         )
 
         testCases.forEach { (type, expectedLabel) ->
@@ -28,6 +30,8 @@ class ArtifactCardTest {
                 ArtifactType.VERIFICATION_PROOF -> "Proof"
                 ArtifactType.WALKTHROUGH -> "Walkthrough"
                 ArtifactType.FILE -> "File"
+                ArtifactType.GENERATIVE_UI -> "UI Preview"
+                ArtifactType.DOCUMENT -> "Doc"
             }
             assertEquals(expectedLabel, label)
         }
