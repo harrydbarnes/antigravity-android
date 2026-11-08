@@ -2,6 +2,7 @@ package com.google.antigravity.mobile.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,9 +21,11 @@ import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -43,6 +47,7 @@ import com.google.antigravity.mobile.data.model.AgentState
 import com.google.antigravity.mobile.data.model.AgentStatus
 import com.google.antigravity.mobile.data.model.RemoteInstance
 import com.google.antigravity.mobile.ui.theme.AntigravityAmber
+import com.google.antigravity.mobile.ui.theme.AntigravityCrimson
 import com.google.antigravity.mobile.ui.theme.AntigravityCyan
 import com.google.antigravity.mobile.ui.theme.AntigravityEmerald
 import com.google.antigravity.mobile.ui.theme.AntigravityViolet
