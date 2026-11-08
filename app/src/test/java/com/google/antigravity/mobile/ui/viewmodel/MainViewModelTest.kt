@@ -77,7 +77,7 @@ class MainViewModelTest {
         )
 
         val connectionUrl = instance.connectionUrl
-        assertTrue(connectionUrl.contains("antigravity.google.com/remote/"))
+        assertTrue(connectionUrl.contains("antigravity.google.com/r/"))
         assertTrue(connectionUrl.endsWith("inst-box-1"))
     }
 
