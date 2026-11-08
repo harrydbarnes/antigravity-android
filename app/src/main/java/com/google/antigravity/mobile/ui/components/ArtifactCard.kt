@@ -20,6 +20,7 @@ import com.google.antigravity.mobile.R
 import com.google.antigravity.mobile.data.model.ArtifactItem
 import com.google.antigravity.mobile.data.model.ArtifactType
 import com.google.antigravity.mobile.ui.theme.AntigravityCyan
+import com.google.antigravity.mobile.ui.theme.AntigravityEmerald
 import com.google.antigravity.mobile.ui.theme.AntigravityViolet
 import com.google.antigravity.mobile.ui.theme.AntigravityVioletLight
 
@@ -52,6 +53,7 @@ fun ArtifactCard(
                     ArtifactType.CODE_DIFF -> Triple(AntigravityCyan.copy(alpha = 0.2f), AntigravityCyan, "DIFF")
                     ArtifactType.VERIFICATION_PROOF -> Triple(AntigravityViolet.copy(alpha = 0.15f), AntigravityVioletLight, "PROOF")
                     ArtifactType.GENERATIVE_UI -> Triple(AntigravityCyan.copy(alpha = 0.2f), AntigravityCyan, "UI PREVIEW")
+                    ArtifactType.WALKTHROUGH -> Triple(AntigravityEmerald.copy(alpha = 0.2f), AntigravityEmerald, "WALKTHROUGH")
                     ArtifactType.DOCUMENT -> Triple(MaterialTheme.colorScheme.surface, MaterialTheme.colorScheme.onSurfaceVariant, "DOC")
                 }
 
