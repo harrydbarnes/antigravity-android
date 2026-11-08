@@ -46,7 +46,7 @@ class ArtifactCardTest {
 
         assertEquals("art-card-test", artifact.id)
         assertEquals("CI/CD Deployment Workflow", artifact.title)
-        assertTrue(artifact.previewMarkdown.contains("Android CI"))
+        assertTrue(artifact.previewMarkdown?.contains("Android CI") == true)
         assertTrue(artifact.userFacing)
         assertNotNull(artifact.summary)
     }

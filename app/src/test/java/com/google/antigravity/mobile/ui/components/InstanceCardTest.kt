@@ -16,7 +16,7 @@ class InstanceCardTest {
             MachineType.WORKSTATION to "Workstation",
             MachineType.CLI_DAEMON to "CLI Daemon",
             MachineType.CLOUD_SERVER to "Cloud VM",
-            MachineType.MOBILE_CLIENT to "Mobile"
+            MachineType.CLI_INTERACTIVE to "Interactive"
         )
 
         testCases.forEach { (type, expected) ->
@@ -24,7 +24,7 @@ class InstanceCardTest {
                 MachineType.WORKSTATION -> "Workstation"
                 MachineType.CLI_DAEMON -> "CLI Daemon"
                 MachineType.CLOUD_SERVER -> "Cloud VM"
-                MachineType.MOBILE_CLIENT -> "Mobile"
+                MachineType.CLI_INTERACTIVE -> "Interactive"
             }
             assertEquals(expected, label)
         }

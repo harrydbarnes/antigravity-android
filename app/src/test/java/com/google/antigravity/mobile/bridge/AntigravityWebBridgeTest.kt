@@ -97,6 +97,6 @@ class AntigravityWebBridgeTest {
         )
         assertEquals(ArtifactType.REPORT, artifact.type)
         assertTrue(artifact.userFacing)
-        assertTrue(artifact.previewMarkdown.contains("All Tests Passed"))
+        assertTrue(artifact.previewMarkdown?.contains("All Tests Passed") == true)
     }
 }

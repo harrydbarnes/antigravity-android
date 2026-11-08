@@ -69,12 +69,12 @@ class AntigravityApiClientTest {
 
         val plan = artifacts.first { it.type == ArtifactType.IMPLEMENTATION_PLAN }
         assertEquals("art-plan-01", plan.id)
-        assertTrue(plan.previewMarkdown.contains("Android Jetpack Compose"))
+        assertTrue(plan.previewMarkdown?.contains("Android Jetpack Compose") == true)
         assertTrue(plan.userFacing)
 
         val diff = artifacts.first { it.type == ArtifactType.CODE_DIFF }
         assertEquals("art-diff-02", diff.id)
-        assertTrue(diff.previewMarkdown.contains("ApprovalActionReceiver.kt"))
+        assertTrue(diff.previewMarkdown?.contains("ApprovalActionReceiver.kt") == true)
     }
 
     @Test

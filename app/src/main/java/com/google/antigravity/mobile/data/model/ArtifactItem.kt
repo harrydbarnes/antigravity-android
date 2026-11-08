@@ -9,7 +9,9 @@ enum class ArtifactType {
     WALKTHROUGH,
     VERIFICATION_PROOF,
     GENERATIVE_UI,
-    DOCUMENT
+    DOCUMENT,
+    REPORT,
+    FILE
 }
 
 @Serializable
@@ -22,4 +24,22 @@ data class ArtifactItem(
     val rawContentUrl: String? = null,
     val previewMarkdown: String? = null,
     val userFacing: Boolean = true
-)
+) {
+    constructor(
+        id: String,
+        title: String,
+        summary: String,
+        type: ArtifactType,
+        previewMarkdown: String?,
+        userFacing: Boolean = true
+    ) : this(
+        id = id,
+        title = title,
+        summary = summary,
+        type = type,
+        createdTimestamp = System.currentTimeMillis(),
+        rawContentUrl = null,
+        previewMarkdown = previewMarkdown,
+        userFacing = userFacing
+    )
+}

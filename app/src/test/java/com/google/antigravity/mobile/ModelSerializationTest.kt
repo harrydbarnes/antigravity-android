@@ -3,6 +3,9 @@ package com.google.antigravity.mobile
 import com.google.antigravity.mobile.data.model.ApprovalRiskLevel
 import com.google.antigravity.mobile.data.model.ArtifactItem
 import com.google.antigravity.mobile.data.model.ArtifactType
+import com.google.antigravity.mobile.data.model.AttachedResource
+import com.google.antigravity.mobile.data.model.CloudProject
+import com.google.antigravity.mobile.data.model.MachineType
 import com.google.antigravity.mobile.data.model.RemoteInstance
 import com.google.antigravity.mobile.data.model.ToolApprovalRequest
 import com.google.antigravity.mobile.data.model.UserAccount

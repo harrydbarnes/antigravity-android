@@ -22,8 +22,8 @@ class MainViewModelTest {
     fun testInitialAgentStatus() {
         val initialStatus = AgentStatus()
         assertEquals(AgentState.IDLE, initialStatus.state)
-        assertEquals("idle", initialStatus.currentActivity)
-        assertEquals("standard", initialStatus.reasoningDepth)
+        assertEquals("Ready for instructions", initialStatus.currentActivity)
+        assertEquals("Balanced", initialStatus.reasoningDepth)
     }
 
     @Test
