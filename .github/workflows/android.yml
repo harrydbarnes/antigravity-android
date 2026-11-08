@@ -28,7 +28,11 @@ jobs:
 
       - name: Build Debug APK
         run: |
-          ./gradlew assembleDebug --stacktrace 2>&1 | tee build.log || (echo "=== GRADLE FAILURE LOG ===" && tail -n 120 build.log && exit 1)
+          ./gradlew assembleDebug --stacktrace --no-daemon
+
+      - name: List outputs
+        run: |
+          find app/build/outputs -type f || true
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
@@ -38,4 +42,4 @@ jobs:
           if-no-files-found: error
 
       - name: Run Unit Tests
-        run: ./gradlew testDebugUnitTest --continue
+        run: ./gradlew testDebugUnitTest --continue --no-daemon
