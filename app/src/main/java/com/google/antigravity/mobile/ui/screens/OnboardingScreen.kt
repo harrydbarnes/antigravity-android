@@ -121,7 +121,7 @@ fun OnboardingScreen(
                     Icon(
                         painter = painterResource(id = R.drawable.ic_counterweight_logo),
                         contentDescription = "Counterweight",
-                        tint = AntigravityViolet,
+                        tint = Color.Unspecified,
                         modifier = Modifier.size(28.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
@@ -277,7 +277,7 @@ private fun OnboardingIntroPage() {
             Icon(
                 painter = painterResource(id = R.drawable.ic_counterweight_logo),
                 contentDescription = "Logo",
-                tint = AntigravityViolet,
+                tint = Color.Unspecified,
                 modifier = Modifier.size(54.dp)
             )
         }
@@ -687,7 +687,7 @@ private fun OnboardingAuthPage(
         Icon(
             painter = painterResource(id = R.drawable.ic_counterweight_logo),
             contentDescription = "Logo",
-            tint = AntigravityViolet,
+            tint = Color.Unspecified,
             modifier = Modifier.size(54.dp)
         )
 

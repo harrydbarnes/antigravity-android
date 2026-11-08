@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.google.antigravity.mobile.R
 import com.google.antigravity.mobile.ui.theme.AntigravityViolet
@@ -31,7 +32,14 @@ fun AntigravityNavBar(
                     contentDescription = stringResource(R.string.nav_workspace)
                 )
             },
-            label = { Text(stringResource(R.string.nav_workspace)) },
+            label = {
+                Text(
+                    text = stringResource(R.string.nav_workspace),
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis
+                )
+            },
             colors = NavigationBarItemDefaults.colors(
                 indicatorColor = AntigravityViolet.copy(alpha = 0.2f),
                 selectedIconColor = AntigravityViolet,
@@ -48,7 +56,14 @@ fun AntigravityNavBar(
                     contentDescription = stringResource(R.string.nav_remote_control)
                 )
             },
-            label = { Text(stringResource(R.string.nav_remote_control)) },
+            label = {
+                Text(
+                    text = stringResource(R.string.nav_remote_control),
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis
+                )
+            },
             colors = NavigationBarItemDefaults.colors(
                 indicatorColor = AntigravityViolet.copy(alpha = 0.2f),
                 selectedIconColor = AntigravityViolet,
@@ -65,7 +80,14 @@ fun AntigravityNavBar(
                     contentDescription = stringResource(R.string.nav_cloud_projects)
                 )
             },
-            label = { Text(stringResource(R.string.nav_cloud_projects)) },
+            label = {
+                Text(
+                    text = stringResource(R.string.nav_cloud_projects),
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis
+                )
+            },
             colors = NavigationBarItemDefaults.colors(
                 indicatorColor = AntigravityViolet.copy(alpha = 0.2f),
                 selectedIconColor = AntigravityViolet,
@@ -82,7 +104,14 @@ fun AntigravityNavBar(
                     contentDescription = stringResource(R.string.nav_artifacts)
                 )
             },
-            label = { Text(stringResource(R.string.nav_artifacts)) },
+            label = {
+                Text(
+                    text = stringResource(R.string.nav_artifacts),
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis
+                )
+            },
             colors = NavigationBarItemDefaults.colors(
                 indicatorColor = AntigravityViolet.copy(alpha = 0.2f),
                 selectedIconColor = AntigravityViolet,
@@ -99,7 +128,14 @@ fun AntigravityNavBar(
                     contentDescription = stringResource(R.string.nav_settings)
                 )
             },
-            label = { Text(stringResource(R.string.nav_settings)) },
+            label = {
+                Text(
+                    text = stringResource(R.string.nav_settings),
+                    maxLines = 1,
+                    softWrap = false,
+                    overflow = TextOverflow.Ellipsis
+                )
+            },
             colors = NavigationBarItemDefaults.colors(
                 indicatorColor = AntigravityViolet.copy(alpha = 0.2f),
                 selectedIconColor = AntigravityViolet,

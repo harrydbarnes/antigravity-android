@@ -11,8 +11,8 @@ class AntigravityNavBarTest {
     fun testNavBarDestinations() {
         val navItems = listOf(
             "workspace" to "Workspace",
-            "remote" to "Remote Control",
-            "cloud" to "Cloud Projects",
+            "remote" to "Remote",
+            "cloud" to "Projects",
             "artifacts" to "Artifacts",
             "settings" to "Settings"
         )

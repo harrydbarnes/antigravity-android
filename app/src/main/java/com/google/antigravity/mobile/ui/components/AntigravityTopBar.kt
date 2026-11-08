@@ -37,6 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -91,7 +92,7 @@ fun AntigravityTopBar(
                     Icon(
                         painter = painterResource(id = R.drawable.ic_counterweight_logo),
                         contentDescription = "Counterweight Logo",
-                        tint = AntigravityViolet,
+                        tint = Color.Unspecified,
                         modifier = Modifier.size(28.dp)
                     )
                     Spacer(modifier = Modifier.width(10.dp))
@@ -185,7 +186,7 @@ fun StatusPill(status: AgentStatus) {
         AgentState.WAITING_APPROVAL -> Triple(AntigravityAmber.copy(alpha = 0.2f), AntigravityAmber, "Approval")
         AgentState.ERROR -> Triple(AntigravityCrimson.copy(alpha = 0.2f), AntigravityCrimson, "Error")
         AgentState.DISCONNECTED -> Triple(MaterialTheme.colorScheme.outline.copy(alpha = 0.2f), MaterialTheme.colorScheme.onSurfaceVariant, "Offline")
-        AgentState.IDLE -> Triple(AntigravityEmerald.copy(alpha = 0.15f), AntigravityEmerald, "Idle")
+        AgentState.IDLE -> Triple(MaterialTheme.colorScheme.surfaceVariant, MaterialTheme.colorScheme.onSurfaceVariant, "Idle")
     }
 
     Surface(

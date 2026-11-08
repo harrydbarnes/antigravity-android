@@ -4,8 +4,8 @@
     
     <!-- Navigation Tabs -->
     <string name="nav_workspace">Workspace</string>
-    <string name="nav_remote_control">Remote Control</string>
-    <string name="nav_cloud_projects">Cloud Projects</string>
+    <string name="nav_remote_control">Remote</string>
+    <string name="nav_cloud_projects">Projects</string>
     <string name="nav_artifacts">Artifacts</string>
     <string name="nav_settings">Settings</string>
 

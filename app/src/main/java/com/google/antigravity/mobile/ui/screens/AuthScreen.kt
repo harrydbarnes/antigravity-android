@@ -57,7 +57,7 @@ fun AuthScreen(
             Icon(
                 painter = painterResource(id = R.drawable.ic_counterweight_logo),
                 contentDescription = "Counterweight Logo",
-                tint = AntigravityViolet,
+                tint = Color.Unspecified,
                 modifier = Modifier.size(72.dp)
             )
 
