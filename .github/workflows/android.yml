@@ -50,4 +50,24 @@ jobs:
           if-no-files-found: error
 
       - name: Run Unit Tests
-        run: ./gradlew testDebugUnitTest --continue --no-daemon
+        run: |
+          set +e
+          ./gradlew testDebugUnitTest --continue --no-daemon > test.log 2>&1
+          TEST_EXIT=$?
+          if [ $TEST_EXIT -ne 0 ]; then
+            echo "::error title=TestFailure::Unit tests failed with exit code $TEST_EXIT"
+            grep -E "FAILURE:|FAILED|error|Exception" test.log | head -n 30 | while IFS= read -r l; do echo "::error title=TestError::$l"; done
+            find app/build/test-results -name "*.xml" | while IFS= read -r f; do
+              grep -E "failure message|error message" "$f" | head -n 20 | while IFS= read -r l; do echo "::error title=XMLFailure::$l"; done
+            done
+            tail -n 60 test.log
+            exit $TEST_EXIT
+          fi
+
+      - name: Upload Test Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-reports
+          path: app/build/reports/tests/testDebugUnitTest/
+          if-no-files-found: ignore
