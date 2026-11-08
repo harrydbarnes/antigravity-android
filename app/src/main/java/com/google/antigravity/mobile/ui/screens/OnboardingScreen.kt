@@ -1,3 +1,5 @@
+@file:OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
+
 package com.google.antigravity.mobile.ui.screens
 
 import android.widget.Toast
@@ -38,6 +40,7 @@ import com.google.antigravity.mobile.data.model.PlanTier
 import com.google.antigravity.mobile.ui.theme.*
 import kotlinx.coroutines.launch
 
+@OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen(
     onFinish: (PlanTier) -> Unit,
