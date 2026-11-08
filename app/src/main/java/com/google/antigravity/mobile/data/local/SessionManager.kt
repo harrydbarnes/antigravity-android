@@ -20,6 +20,9 @@ class SessionManager(context: Context) {
     private val _activeInstanceId = MutableStateFlow(prefs.getString(KEY_ACTIVE_INSTANCE_ID, null))
     val activeInstanceId: StateFlow<String?> = _activeInstanceId.asStateFlow()
 
+    private val _hasCompletedOnboarding = MutableStateFlow(prefs.getBoolean(KEY_HAS_COMPLETED_ONBOARDING, false))
+    val hasCompletedOnboarding: StateFlow<Boolean> = _hasCompletedOnboarding.asStateFlow()
+
     private val _activeProjectId = MutableStateFlow(prefs.getString(KEY_ACTIVE_PROJECT_ID, null))
     val activeProjectId: StateFlow<String?> = _activeProjectId.asStateFlow()
 
@@ -62,6 +65,15 @@ class SessionManager(context: Context) {
         _activeProjectId.value = projectId
     }
 
+    fun setHasCompletedOnboarding(completed: Boolean) {
+        prefs.edit().putBoolean(KEY_HAS_COMPLETED_ONBOARDING, completed).apply()
+        _hasCompletedOnboarding.value = completed
+    }
+
+    fun resetOnboarding() {
+        setHasCompletedOnboarding(false)
+    }
+
     fun getSessionCookies(): String? {
         return prefs.getString(KEY_SESSION_COOKIES, null)
     }
@@ -88,6 +100,7 @@ class SessionManager(context: Context) {
         private const val KEY_ACTIVE_INSTANCE_ID = "key_active_instance_id"
         private const val KEY_ACTIVE_PROJECT_ID = "key_active_project_id"
         private const val KEY_SESSION_COOKIES = "key_session_cookies"
+        private const val KEY_HAS_COMPLETED_ONBOARDING = "key_has_completed_onboarding"
 
         @Volatile
         private var instance: SessionManager? = null

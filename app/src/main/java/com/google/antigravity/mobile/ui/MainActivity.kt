@@ -97,6 +97,7 @@ fun MainAppContent(
     val pendingApproval by viewModel.pendingApproval.collectAsStateWithLifecycle()
     val webUrl by viewModel.webUrl.collectAsStateWithLifecycle()
     val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsStateWithLifecycle()
+    val hasCompletedOnboarding by viewModel.hasCompletedOnboarding.collectAsStateWithLifecycle()
 
     var selectedTab by remember { mutableIntStateOf(0) }
 
@@ -111,10 +112,13 @@ fun MainAppContent(
         }
     }
 
-    if (!currentUser.isSignedIn) {
-        AuthScreen(
-            onSignIn = { tier ->
+    if (!hasCompletedOnboarding || !currentUser.isSignedIn) {
+        OnboardingScreen(
+            onFinish = { tier ->
                 viewModel.signInWithGoogle(tier)
+            },
+            onSkip = {
+                viewModel.completeOnboarding()
             }
         )
     } else {
@@ -174,6 +178,7 @@ fun MainAppContent(
                         isBiometricEnabled = isBiometricEnabled,
                         onSetReasoningDepth = { viewModel.setReasoningDepth(it) },
                         onToggleBiometrics = { viewModel.toggleBiometrics(it) },
+                        onReplayTour = { viewModel.replayOnboarding() },
                         onSignOut = { viewModel.signOut() }
                     )
                 }

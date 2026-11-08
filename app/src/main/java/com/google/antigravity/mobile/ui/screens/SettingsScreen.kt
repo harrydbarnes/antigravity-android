@@ -41,6 +41,7 @@ fun SettingsScreen(
     isBiometricEnabled: Boolean,
     onSetReasoningDepth: (String) -> Unit,
     onToggleBiometrics: (Boolean) -> Unit,
+    onReplayTour: () -> Unit = {},
     onSignOut: () -> Unit
 ) {
     val context = LocalContext.current
@@ -304,6 +305,23 @@ fun SettingsScreen(
                         }
                     }
                 }
+            }
+        }
+
+        // Onboarding Tour Replay
+        item {
+            OutlinedButton(
+                onClick = onReplayTour,
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Info,
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("Revisit Onboarding Tour")
             }
         }
 

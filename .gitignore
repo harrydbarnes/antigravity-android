@@ -16,3 +16,9 @@ local.properties
 /app/build
 *.apk
 *.aab
+.gemini
+.bash*
+.profile
+.gitconfig
+harrydbarnes/
+upload/

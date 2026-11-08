@@ -17,6 +17,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     // Authentication & Account
     val currentUser: StateFlow<UserAccount> = sessionManager.currentUser
     val isBiometricEnabled: StateFlow<Boolean> = sessionManager.isBiometricLockEnabled
+    val hasCompletedOnboarding: StateFlow<Boolean> = sessionManager.hasCompletedOnboarding
 
     // Remote Control instances
     private val _instances = MutableStateFlow<List<RemoteInstance>>(emptyList())
@@ -141,6 +142,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         sessionManager.setBiometricLockEnabled(enabled)
     }
 
+    fun completeOnboarding() {
+        sessionManager.setHasCompletedOnboarding(true)
+    }
+
+    fun replayOnboarding() {
+        sessionManager.resetOnboarding()
+    }
+
     fun signInWithGoogle(planTier: PlanTier) {
         sessionManager.saveUser(
             UserAccount(
@@ -150,6 +159,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 isSignedIn = true
             )
         )
+        sessionManager.setHasCompletedOnboarding(true)
     }
 
     fun signOut() {
