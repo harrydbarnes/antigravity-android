@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build APK & Run Tests
+    name: Build & Package Android APK
     runs-on: ubuntu-latest
 
     steps:
@@ -26,10 +26,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Run Unit Tests
-        run: ./gradlew testDebugUnitTest --continue
-
-      - name: Assemble Debug APK
+      - name: Build Debug APK
         run: ./gradlew assembleDebug --stacktrace
 
       - name: Upload Debug APK
@@ -38,3 +35,6 @@ jobs:
           name: antigravity-mobile-debug.apk
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+
+      - name: Run Unit Tests
+        run: ./gradlew testDebugUnitTest --continue
