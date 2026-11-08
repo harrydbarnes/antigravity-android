@@ -2,10 +2,8 @@ package com.google.antigravity.mobile.ui
 
 import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -15,9 +13,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.antigravity.mobile.data.model.RemoteInstance
@@ -25,7 +27,12 @@ import com.google.antigravity.mobile.security.BiometricHelper
 import com.google.antigravity.mobile.ui.components.AntigravityNavBar
 import com.google.antigravity.mobile.ui.components.AntigravityTopBar
 import com.google.antigravity.mobile.ui.components.ApprovalDialog
-import com.google.antigravity.mobile.ui.screens.*
+import com.google.antigravity.mobile.ui.screens.ArtifactsScreen
+import com.google.antigravity.mobile.ui.screens.CloudProjectsScreen
+import com.google.antigravity.mobile.ui.screens.OnboardingScreen
+import com.google.antigravity.mobile.ui.screens.RemoteControlScreen
+import com.google.antigravity.mobile.ui.screens.SettingsScreen
+import com.google.antigravity.mobile.ui.screens.WorkspaceWebScreen
 import com.google.antigravity.mobile.ui.theme.AntigravityTheme
 import com.google.antigravity.mobile.ui.viewmodel.MainViewModel
 

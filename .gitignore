@@ -22,3 +22,7 @@ local.properties
 .gitconfig
 harrydbarnes/
 upload/
+.desloppify/
+.local/
+.cache/
+.npm/

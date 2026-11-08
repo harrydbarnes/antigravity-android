@@ -1,10 +1,14 @@
 package com.google.antigravity.mobile.data.remote
 
-import com.google.antigravity.mobile.data.model.*
+import com.google.antigravity.mobile.data.model.ArtifactItem
+import com.google.antigravity.mobile.data.model.ArtifactType
+import com.google.antigravity.mobile.data.model.AttachedResource
+import com.google.antigravity.mobile.data.model.CloudProject
+import com.google.antigravity.mobile.data.model.MachineType
+import com.google.antigravity.mobile.data.model.RemoteInstance
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import java.util.concurrent.TimeUnit
 
 class AntigravityApiClient(

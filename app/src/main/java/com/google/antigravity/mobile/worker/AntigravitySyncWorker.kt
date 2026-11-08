@@ -1,11 +1,15 @@
 package com.google.antigravity.mobile.worker
 
 import android.content.Context
-import androidx.work.*
-import com.google.antigravity.mobile.data.model.AgentState
-import com.google.antigravity.mobile.data.model.ToolApprovalRequest
+import androidx.work.BackoffPolicy
+import androidx.work.Constraints
+import androidx.work.CoroutineWorker
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkerParameters
+import androidx.work.WorkManager
 import com.google.antigravity.mobile.data.remote.AntigravityApiClient
-import com.google.antigravity.mobile.notification.NotificationHelper
 import java.util.concurrent.TimeUnit
 
 class AntigravitySyncWorker(

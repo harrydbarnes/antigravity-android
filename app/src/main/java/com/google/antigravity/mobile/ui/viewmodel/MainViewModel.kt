@@ -4,9 +4,18 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.antigravity.mobile.data.local.SessionManager
-import com.google.antigravity.mobile.data.model.*
+import com.google.antigravity.mobile.data.model.AgentState
+import com.google.antigravity.mobile.data.model.AgentStatus
+import com.google.antigravity.mobile.data.model.ArtifactItem
+import com.google.antigravity.mobile.data.model.CloudProject
+import com.google.antigravity.mobile.data.model.PlanTier
+import com.google.antigravity.mobile.data.model.RemoteInstance
+import com.google.antigravity.mobile.data.model.ToolApprovalRequest
+import com.google.antigravity.mobile.data.model.UserAccount
 import com.google.antigravity.mobile.data.remote.AntigravityApiClient
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {

@@ -2,12 +2,26 @@ package com.google.antigravity.mobile.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,7 +35,12 @@ import androidx.compose.ui.unit.sp
 import com.google.antigravity.mobile.R
 import com.google.antigravity.mobile.data.model.MachineType
 import com.google.antigravity.mobile.data.model.RemoteInstance
-import com.google.antigravity.mobile.ui.theme.*
+import com.google.antigravity.mobile.ui.theme.AntigravityAmber
+import com.google.antigravity.mobile.ui.theme.AntigravityCyan
+import com.google.antigravity.mobile.ui.theme.AntigravityEmerald
+import com.google.antigravity.mobile.ui.theme.AntigravityViolet
+import com.google.antigravity.mobile.ui.theme.CardStrokeDark
+import com.google.antigravity.mobile.ui.theme.SurfaceVariantDark
 
 @Composable
 fun InstanceCard(

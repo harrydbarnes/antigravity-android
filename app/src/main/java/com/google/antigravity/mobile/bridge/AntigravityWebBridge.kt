@@ -4,7 +4,12 @@ import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.webkit.JavascriptInterface
-import com.google.antigravity.mobile.data.model.*
+import com.google.antigravity.mobile.data.model.AgentState
+import com.google.antigravity.mobile.data.model.AgentStatus
+import com.google.antigravity.mobile.data.model.ApprovalRiskLevel
+import com.google.antigravity.mobile.data.model.ArtifactItem
+import com.google.antigravity.mobile.data.model.ArtifactType
+import com.google.antigravity.mobile.data.model.ToolApprovalRequest
 import com.google.antigravity.mobile.notification.NotificationHelper
 
 class AntigravityWebBridge(

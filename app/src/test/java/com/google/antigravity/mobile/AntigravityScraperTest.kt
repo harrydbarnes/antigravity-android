@@ -3,7 +3,9 @@ package com.google.antigravity.mobile
 import com.google.antigravity.mobile.data.model.AgentState
 import com.google.antigravity.mobile.data.model.MachineType
 import com.google.antigravity.mobile.data.remote.AntigravityScraper
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
