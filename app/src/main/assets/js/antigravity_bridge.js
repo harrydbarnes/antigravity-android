@@ -1,7 +1,7 @@
 /**
  * Antigravity Native Android Mobile Bridge
  * Enables bidirectional communication between Antigravity Web surfaces (antigravity.google.com)
- * and the native Android OS (Heads-up notifications, Biometrics, Instance Switcher, Tool Approvals).
+ * and the native Android OS (Heads-up notifications, Biometrics, Instance Switcher, Tool Approvals, Voice Mode).
  */
 (function() {
     if (window.__antigravity_bridge_initialized) return;
@@ -29,7 +29,7 @@
     window.Notification.permission = 'granted';
     window.Notification.requestPermission = async () => 'granted';
 
-    // 2. DOM Mutation Observer to detect Tool Approvals & Questions in real time
+    // 2. DOM Mutation Observer to detect Tool Approvals, Clarifying Questions & Artifacts
     function setupDomObservers() {
         const observer = new MutationObserver((mutations) => {
             // Check for tool approval prompts (e.g., Run command confirmation dialog)
@@ -41,6 +41,21 @@
                 
                 if (window.AntigravityNative && window.AntigravityNative.onApprovalRequested) {
                     window.AntigravityNative.onApprovalRequested(toolName, commandText, Date.now().toString());
+                }
+            }
+
+            // Check for User Clarifying Questions (e.g. ask_question modal)
+            const questionModal = document.querySelector('[data-testid="clarifying-question-modal"], .question-prompt-card');
+            if (questionModal && !questionModal.dataset.nativeNotified) {
+                questionModal.dataset.nativeNotified = 'true';
+                const questionText = questionModal.querySelector('h3, .question-title')?.textContent || 'Agent needs clarification';
+                if (window.AntigravityNative && window.AntigravityNative.postNotification) {
+                    window.AntigravityNative.postNotification(
+                        'Antigravity Needs Input',
+                        questionText,
+                        'question',
+                        window.location.href
+                    );
                 }
             }
 
@@ -108,6 +123,17 @@
         }
     };
 
+    // Voice Mode Trigger (Gemini Live)
+    window.__antigravity_toggle_voice = function() {
+        console.log('[Antigravity Mobile] Toggling Gemini Live Voice Mode');
+        const voiceBtn = document.querySelector('button[data-testid="voice-mode-toggle"], button[aria-label="Voice mode"], .voice-mic-button');
+        if (voiceBtn) {
+            voiceBtn.click();
+        } else {
+            window.__antigravity_send_prompt('/voice');
+        }
+    };
+
     // 4. Mobile layout styling tweaks (clean edge-to-edge look)
     const mobileStyle = document.createElement('style');
     mobileStyle.textContent = `
@@ -118,5 +144,5 @@
     `;
     document.head.appendChild(mobileStyle);
 
-    console.log('[Antigravity Mobile] Bridge active.');
+    console.log('[Antigravity Mobile] Bridge active with Voice Mode & Question observers.');
 })();
