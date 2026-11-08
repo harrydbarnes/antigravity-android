@@ -74,7 +74,7 @@ class AntigravityApiClientTest {
 
         val diff = artifacts.first { it.type == ArtifactType.CODE_DIFF }
         assertEquals("art-diff-02", diff.id)
-        assertTrue(diff.previewMarkdown?.contains("ApprovalActionReceiver.kt") == true)
+        assertTrue(diff.title.contains("ApprovalActionReceiver.kt"))
     }
 
     @Test
