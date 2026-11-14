@@ -28,3 +28,7 @@ upload/
 .npm/
 .ssl/
 
+
+__pycache__/
+*.pyc
+.counterweight-token

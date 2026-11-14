@@ -135,7 +135,7 @@ fun SettingsScreen(
                         shape = RoundedCornerShape(8.dp)
                     ) {
                         Text(
-                            text = if (user.planTier == PlanTier.ULTRA) "AI ULTRA" else "AI PRO",
+                            text = "BROWSER",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             color = AntigravityVioletLight,

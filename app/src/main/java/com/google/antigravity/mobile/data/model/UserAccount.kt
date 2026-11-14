@@ -13,9 +13,9 @@ enum class PlanTier {
 @Serializable
 data class UserAccount(
     val id: String = "user-default",
-    val email: String = "developer@example.com",
-    val displayName: String = "Antigravity Engineer",
+    val email: String = "Managed in your browser",
+    val displayName: String = "Google account",
     val photoUrl: String? = null,
-    val planTier: PlanTier = PlanTier.ULTRA,
-    val isSignedIn: Boolean = true
+    val planTier: PlanTier = PlanTier.FREE,
+    val isSignedIn: Boolean = false
 )

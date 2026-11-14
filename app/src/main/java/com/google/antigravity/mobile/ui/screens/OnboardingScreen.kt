@@ -694,7 +694,7 @@ private fun OnboardingAuthPage(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = "Select Your Plan",
+            text = "Connect your workspace",
             style = MaterialTheme.typography.headlineLarge,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onBackground
@@ -703,37 +703,13 @@ private fun OnboardingAuthPage(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            text = "Counterweight & Antigravity Remote features are included with Google AI Pro and Google AI Ultra accounts.",
+            text = "Continue to Antigravity in your browser to sign in with Google. Your account and subscription are managed by Antigravity.",
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
 
         Spacer(modifier = Modifier.height(24.dp))
-
-        // Plan Tier Option: ULTRA
-        PlanCard(
-            title = "Google AI Ultra",
-            badge = "RECOMMENDED",
-            subtitle = "Deepest reasoning depth, unlimited remote machines, and highest priority cloud compute.",
-            isSelected = selectedTier == PlanTier.ULTRA,
-            accentColor = AntigravityViolet,
-            onClick = { onSelectTier(PlanTier.ULTRA) }
-        )
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        // Plan Tier Option: PRO
-        PlanCard(
-            title = "Google AI Pro",
-            badge = "PRO DEVELOPER",
-            subtitle = "Fast balanced reasoning, cloud sandbox containers, and multi-agent workflows.",
-            isSelected = selectedTier == PlanTier.PRO,
-            accentColor = AntigravityCyan,
-            onClick = { onSelectTier(PlanTier.PRO) }
-        )
-
-        Spacer(modifier = Modifier.height(28.dp))
 
         // Sign in CTA Button
         Button(
@@ -754,7 +730,7 @@ private fun OnboardingAuthPage(
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = "Sign in with Google",
+                    text = "Continue to Antigravity",
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurface,
                     fontWeight = FontWeight.Bold
@@ -765,7 +741,7 @@ private fun OnboardingAuthPage(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = "By signing in, you agree to Google Antigravity & Counterweight Terms of Service.",
+            text = "Your browser handles Google sign-in. Returning here does not confirm that you are signed in.",
             fontSize = 11.sp,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant

@@ -62,9 +62,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val _isRefreshing = MutableStateFlow(false)
     val isRefreshing: StateFlow<Boolean> = _isRefreshing.asStateFlow()
 
-    init {
-        loadData()
-    }
+    // The native companion owns real connection state; do not load demo dashboards.
 
     fun loadData() {
         viewModelScope.launch {
@@ -159,19 +157,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         sessionManager.resetOnboarding()
     }
 
-    fun signInWithGoogle(planTier: PlanTier) {
-        sessionManager.saveUser(
-            UserAccount(
-                email = "developer@google.com",
-                displayName = "Google Engineer",
-                planTier = planTier,
-                isSignedIn = true
-            )
-        )
-        sessionManager.setHasCompletedOnboarding(true)
-    }
-
     fun signOut() {
         sessionManager.signOut()
+        sessionManager.setHasCompletedOnboarding(false)
     }
 }
