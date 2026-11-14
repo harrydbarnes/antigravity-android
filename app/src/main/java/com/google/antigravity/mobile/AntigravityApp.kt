@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.work.Configuration
 import com.google.antigravity.mobile.data.local.SessionManager
 import com.google.antigravity.mobile.notification.NotificationHelper
-import com.google.antigravity.mobile.worker.AntigravitySyncWorker
 
 class AntigravityApp : Application(), Configuration.Provider {
 
@@ -24,11 +23,12 @@ class AntigravityApp : Application(), Configuration.Provider {
             Log.e(TAG, "Failed to create notification channels", e)
         }
 
-        // 2. Schedule Background Sync Worker defensively
+        // Retire the legacy sample-data worker on upgrade.
         try {
-            AntigravitySyncWorker.schedule(this)
+            androidx.work.WorkManager.getInstance(this)
+                .cancelUniqueWork("antigravity_background_sync")
         } catch (e: Exception) {
-            Log.e(TAG, "Failed to schedule background sync worker", e)
+            Log.e(TAG, "Failed to cancel legacy sync worker", e)
         }
 
         // 3. Initialize Session Manager defensively

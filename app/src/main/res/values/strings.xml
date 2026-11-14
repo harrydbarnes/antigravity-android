@@ -65,5 +65,5 @@
     <string name="settings_biometrics">Biometric Security Lock</string>
     <string name="settings_biometrics_desc">Require fingerprint/face to approve commands or access remote tunnels</string>
     <string name="settings_dark_mode">Dark Theme</string>
-    <string name="settings_sign_out">Sign Out</string>
+    <string name="settings_sign_out">Reset app setup</string>
 </resources>

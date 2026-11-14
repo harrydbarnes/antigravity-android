@@ -27,17 +27,9 @@ class SessionManager(context: Context) {
     val activeProjectId: StateFlow<String?> = _activeProjectId.asStateFlow()
 
     private fun loadUser(): UserAccount {
-        val isSignedIn = prefs.getBoolean(KEY_IS_SIGNED_IN, true) // default logged in demo
-        val email = prefs.getString(KEY_USER_EMAIL, "developer@antigravity.internal") ?: "developer@antigravity.internal"
-        val name = prefs.getString(KEY_USER_NAME, "Antigravity Engineer") ?: "Antigravity Engineer"
-        val tierStr = prefs.getString(KEY_PLAN_TIER, PlanTier.ULTRA.name) ?: PlanTier.ULTRA.name
-        val tier = try { PlanTier.valueOf(tierStr) } catch (e: Exception) { PlanTier.ULTRA }
-        return UserAccount(
-            email = email,
-            displayName = name,
-            planTier = tier,
-            isSignedIn = isSignedIn
-        )
+        // Browser authentication is isolated from this local preferences store.
+        // Ignore legacy demo identities, including previously persisted ones.
+        return UserAccount(isSignedIn = false)
     }
 
     fun saveUser(user: UserAccount) {

@@ -1,148 +1,115 @@
-# Google Antigravity Android
+# Counterweight: native Antigravity Android companion
 
-A native, ultra-modern, lightweight Android application for **Google Antigravity**, built with **Kotlin**, **Jetpack Compose**, **Material 3 (Material You / Dynamic Colors)**, and **Clean Architecture**.
+Counterweight uses **native Jetpack Compose chat** connected to the official
+Antigravity CLI's **Agent Client Protocol (ACP)**. The phone pairs with a small
+companion on your computer. It does not embed the Antigravity website, scrape
+Google cookies, or claim that selecting a Google account authenticates an
+Antigravity workspace.
 
-The app untethers developers from their desks, enabling them to drive active workstations & CLI daemons via **Remote Control**, orchestrate autonomous background agents in **Remote Cloud Projects**, approve sensitive tool executions from the notification shade, and inspect rich deliverables and artifacts anywhere.
+## How Google login works
 
----
+1. Sign in once to the official Antigravity CLI on your computer.
+2. Start the Counterweight companion in your chosen project directory.
+3. Pair Android with the companion's HTTPS address and token once.
+4. On later launches, Android reconnects using its saved pairing.
 
-## 🚀 Key Highlights & Standards
+`agy acp` reuses the CLI's cached Google credentials. Google tokens stay on the
+computer. Android stores only the companion token, encrypted using Android
+Keystore, excluded from backup and device transfer. There is no phone website
+login and no Firebase or Google Cloud OAuth project to configure.
 
-- **Target SDK 35 (Android 15) & Min SDK 26 (Android 8.0+)**: Built with the latest Android platform capabilities, edge-to-edge system insets, and predictive back support.
-- **Modern Jetpack Compose & Material 3**: Seamless dynamic color theming with a developer-first dark mode aesthetic (Deep Space Slate, Electric Violet `#7C4DFF`, Neon Cyan `#00E5FF`, and Emerald `#00E676`).
-- **Hybrid Powerhouse Architecture**:
-  - **Native Shell & Dashboards**: Instance Switcher, Agent Reasoning Depth Dial, Cloud Project Manager, Deliverables/Artifacts Inspector, and Settings.
-  - **Embedded High-Performance WebView Wrapper**: Loads `antigravity.google.com` surfaces with custom mobile layout optimizations and hardware acceleration.
-  - **Bidirectional JavaScript Bridge (`AntigravityWebBridge`)**: Injects `antigravity_bridge.js` to observe DOM mutations, intercept Web Notifications, and wire web events directly into native Android APIs.
-- **Proactive Push & Heads-up Notifications**:
-  - Full **Android 13+ `POST_NOTIFICATIONS`** runtime permission integration.
-  - **Direct Notification Actions**: When an agent requests tool approval (e.g., executing shell commands, file modifications), a heads-up alert appears with instant **"Approve (Y)"** and **"Reject (N)"** buttons. Approvals are transmitted without even unlocking the phone or launching the full UI!
-  - `AntigravitySyncWorker` with Android `WorkManager` for periodic background health checks and task completion alerts.
-- **Biometric Security Protection**: AndroidX `BiometricPrompt` gatekeeping for remote workstation execution and high-risk tool authorizations.
-- **Deep Linking**: Seamless URL handling for `https://antigravity.google.com/r/*` (Remote Control tunnels), `/projects/*` (Cloud Sandboxes), and `/c/*` (Active Conversations).
+**A signed-in, reachable computer is required.** This is a desktop companion,
+not a direct client for Google's hosted cloud projects or an existing desktop
+conversation. The bridge starts a new ACP session within the configured directory.
+It keeps that session while the companion process is running, including when the
+phone disconnects. Restarting the companion starts a fresh conversation.
 
----
+## Start the desktop companion
 
-## 📱 Navigation & Screen Breakdown
+Requirements: Python 3.10+, the official Antigravity CLI with ACP support, and a
+project folder. The companion has no third-party Python dependencies.
 
-| Tab | Destination | Functionality |
-| :--- | :--- | :--- |
-| **0** | **Workspace** | Live terminal & agent conversation stream inside the modern WebView wrapper with a native quick-prompt floating bar and slash command shortcuts (`/goal`, `/plan`, `/remote-control`). |
-| **1** | **Remote Control** | Real-time workstation and CLI daemon status dashboard (`romin-macbook-pro`, `devbox-swift-falcon`). Launch direct reverse tunnels or copy headless daemon commands. |
-| **2** | **Cloud Projects** | Manage isolated Google-managed Linux cloud containers. Attach GitHub repositories, Google Drive files, and uploads staged at `/home/antigravity/upload`. |
-| **3** | **Artifacts** | Tangible deliverables viewer: Implementation plans, code diffs, verification proofs, and generative UI mocks with syntax formatting. |
-| **4** | **Settings** | Google Account tier management (Google AI Pro & Ultra), Dynamic Reasoning Depth adjustment (Fast / Balanced / Deep), biometric lock toggle, and notification rules. |
-
----
-
-## 🛠️ Project Structure
-
-```
-antigravity-android/
-├── .github/workflows/
-│   └── android.yml                # CI/CD automated build & unit test workflow
-├── app/
-│   ├── build.gradle.kts           # App module configuration (Compose, Coroutines, Serialization)
-│   ├── proguard-rules.pro         # R8 optimization rules for bridge, models, and workers
-│   └── src/
-│       ├── main/
-│       │   ├── AndroidManifest.xml
-│       │   ├── assets/js/
-│       │   │   └── antigravity_bridge.js  # Client-side observer & DOM scraper
-│       │   ├── java/com/google/antigravity/mobile/
-│       │   │   ├── AntigravityApp.kt      # Application initialization & notification channels
-│       │   │   ├── bridge/
-│       │   │   │   └── AntigravityWebBridge.kt # @JavascriptInterface bridge implementation
-│       │   │   ├── data/
-│       │   │   │   ├── local/
-│       │   │   │   │   └── SessionManager.kt   # Persistent credentials & preference store
-│       │   │   │   ├── model/
-│       │   │   │   │   ├── AgentStatus.kt      # Agent state (Thinking, Executing, Idle)
-│       │   │   │   │   ├── ArtifactItem.kt     # Deliverable models (Plans, Diffs, Proofs)
-│       │   │   │   │   ├── CloudProject.kt     # Sandbox models & attached resources
-│       │   │   │   │   ├── RemoteInstance.kt   # Workstations & CLI daemons
-│       │   │   │   │   ├── ToolApprovalRequest.kt # Approval payload & risk levels
-│       │   │   │   │   └── UserAccount.kt      # Google AI Pro/Ultra subscriber profiles
-│       │   │   │   └── remote/
-│       │   │   │       ├── AntigravityApiClient.kt # REST client for tunnels & dispatches
-│       │   │   │       └── AntigravityScraper.kt   # Fallback DOM / regex scraper
-│       │   │   ├── notification/
-│       │   │   │   ├── ApprovalActionReceiver.kt   # BroadcastReceiver for 1-tap notification actions
-│       │   │   │   └── NotificationHelper.kt       # Channel & notification builder
-│       │   │   ├── security/
-│       │   │   │   └── BiometricHelper.kt          # BiometricPrompt integration
-│       │   │   ├── ui/
-│       │   │   │   ├── MainActivity.kt             # Single activity host & deep links
-│       │   │   │   ├── components/                 # TopBar, NavBar, ApprovalDialog, Cards
-│       │   │   │   ├── screens/                    # Workspace, RemoteControl, Cloud, Artifacts, Settings
-│       │   │   │   ├── theme/                      # Material 3 colors, typography, theme
-│       │   │   │   └── viewmodel/
-│       │   │   │       └── MainViewModel.kt        # StateFlow orchestration
-│       │   │   └── worker/
-│       │   │       └── AntigravitySyncWorker.kt    # Background WorkManager periodic sync
-│       │   └── res/                            # Vector drawables, themes, and strings
-│       └── test/java/com/google/antigravity/mobile/
-│           ├── AntigravityScraperTest.kt       # Scraper & status extraction tests
-│           └── ModelSerializationTest.kt       # JSON serialization tests
-├── gradle/
-│   ├── libs.versions.toml         # Gradle Version Catalog
-│   └── wrapper/                   # Gradle 8.7 wrapper distribution
-├── build.gradle.kts               # Root build script
-├── gradle.properties              # JVM options & AndroidX properties
-└── settings.gradle.kts            # Project repository definitions
-```
-
----
-
-## 🔌 Connecting Host Workstations to the Android App
-
-To drive a physical desktop, Mac, or Linux development machine from this Android app:
-
-### 1. Headless Background Daemon (Recommended)
-Register an always-on OS background service on your host machine:
 ```bash
-agy remote-control start --name "my-workstation"
+agy acp --help
+# If you are not signed in, complete the official desktop login:
+agy acp --login
+# Exit the interactive process after sign-in, then start the companion:
+python3 companion/server.py --workspace /absolute/path/to/project
 ```
-Check status and instance name:
+
+The companion prints a pairing token and listens on `127.0.0.1:8765`. Treat this
+token as remote access to the agent on your computer. It is saved in
+`~/.counterweight-token`; keep it private. To revoke it, stop the server, delete
+that file and restart, then pair Android again. No Google credentials are printed
+or sent to Android.
+
+### Give Android a trusted HTTPS address
+
+Android requires HTTPS with a certificate trusted by the device. It never bypasses
+certificate checks or follows HTTP redirects with the bearer token.
+
+One private-network option is Tailscale on both devices. With HTTPS enabled in
+your tailnet, publish the loopback companion to your own tailnet:
+
 ```bash
-agy remote-control status
+tailscale serve --bg http://127.0.0.1:8765
 ```
-Open **Antigravity Android** -> **Remote Control** tab -> tap **"Drive Session"** next to your workstation.
 
-### 2. Interactive Terminal Session
-Enable reverse tunneling for an active terminal session:
+Use the HTTPS address printed by Tailscale in Android. Use **Serve**, not Funnel;
+no public exposure is needed. Alternatively, put your existing HTTPS reverse proxy
+in front of the loopback listener, or supply your own trusted certificate directly:
+
 ```bash
-agy --remote-control
-# Or inside an existing prompt:
-/remote-control on
+python3 companion/server.py --workspace /absolute/path/to/project \
+  --host 0.0.0.0 --cert /path/to/fullchain.pem --key /path/to/privkey.pem
 ```
-The CLI prints a tunnel link:
-```
-Open https://antigravity.google.com/r/<instance-id>?p=c%2F<conversation-id>
-```
-Tap the link on your phone or paste `<instance-id>` into the app's **Direct Tunnel** modal to take over control.
 
----
+A non-loopback HTTP listener is rejected. Windows users can run the companion
+with `py -3 companion/server.py ...` where Python and `agy` are available in PATH.
 
-## 🏗️ Building and Testing
+## On Android
 
-### Prerequisites
-- JDK 17
-- Android SDK 35 (Platform 35, Build Tools 35.0.0)
+- Open Counterweight, paste the HTTPS address and full pairing token, then tap
+  **Pair computer**. Pairing is saved only after ACP creates a session.
+- Send a prompt. Agent text appears in the native conversation.
+- Approvals show the agent's tool details and exact permission choices.
+  Nothing is automatically approved by this client. Your desktop agent's existing
+  policies still determine which actions require approval.
+- **Stop** sends ACP cancellation and cancels outstanding approval requests.
+- Unanswered approvals expire after two minutes, including when Android is offline.
+- If disconnected, tap **Reconnect**. Prompts are never automatically replayed.
+- **Forget computer** removes the local pairing. It does not sign Google out of
+  your desktop or revoke a token copied elsewhere.
 
-### Run Unit Tests
+The live UI deliberately does not expose the repository's old sample cloud
+projects, workstations, artifacts or fake-success tool actions. Those legacy
+components remain in source, outside the launched native path. The client does
+not yet support attachments, session browsing, cloud agents, model selection or
+background notifications. ACP client-side filesystem and terminal capabilities
+are not advertised; the CLI owns its own tools.
+
+## Build and verification
+
+JDK 17, Android SDK 34, and network access to Gradle/Maven repositories are required.
+
 ```bash
-./gradlew testDebugUnitTest
+python3 -m unittest discover -s companion/tests -v
+./gradlew testDebugUnitTest assembleDebug
 ```
 
-### Build Debug APK
-```bash
-./gradlew assembleDebug
-```
-Output APK location:
-`app/build/outputs/apk/debug/app-debug.apk`
+The companion tests run a deterministic **ACP subprocess fixture**, exercising
+initialisation, session creation, streaming, permissions, cancellation, process
+failure, pairing authentication and reconnection. They do not contact Google or
+prove that a particular installed CLI release behaves correctly. GitHub Actions
+runs the companion tests plus the Android build and existing unit tests.
 
-### Build Release Bundle (AAB)
-```bash
-./gradlew bundleRelease
-```
+Live acceptance check: run the real signed-in CLI, pair a physical phone over
+trusted HTTPS, ask for a response, exercise an approval and rejection, then
+restart Android and confirm it reconnects to the same companion session. Also
+check cancellation, revoked tokens, offline recovery and companion restart.
+
+## Official references
+
+- [Antigravity ACP and cached authentication](https://antigravity.google/docs/cli/acp)
+- [ACP v1 protocol](https://agentclientprotocol.com/protocol/v1/initialization)
+- [Tailscale Serve](https://tailscale.com/kb/1242/tailscale-serve)
